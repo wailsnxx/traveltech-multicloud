@@ -341,66 +341,6 @@ main {
   padding: 8px;
 }
 
-/* WEATHER WIDGET */
-.weather-widget {
-  flex: 1;
-}
-
-.weather-result {
-  background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
-  border: 1px solid #bae6fd;
-  border-radius: var(--radius);
-  padding: 16px;
-}
-
-.weather-main {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-
-.weather-main img {
-  width: 64px;
-  height: 64px;
-}
-
-.weather-temp {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--primary-dark);
-  line-height: 1;
-}
-
-.weather-desc {
-  color: var(--text-light);
-  font-size: 0.9rem;
-  text-transform: capitalize;
-  margin-top: 4px;
-}
-
-.weather-details {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 6px;
-}
-
-.weather-detail {
-  background: white;
-  padding: 6px 10px;
-  border-radius: 6px;
-  font-size: 0.82rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
-
-.weather-detail span {
-  font-weight: 700;
-  color: var(--primary);
-  font-size: 0.72rem;
-  text-transform: uppercase;
-}
 
 /* FOOTER */
 footer {

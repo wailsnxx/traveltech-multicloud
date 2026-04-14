@@ -69,7 +69,7 @@ async function searchCountry() {
 
     // Mostrar botons d'acció als serveis
     document.getElementById('favForm').className = 'service-form';
-    document.getElementById('weatherForm').className = 'service-form';
+    document.getElementById('visitedForm').className = 'service-form';
     document.getElementById('commentForm').className = 'service-form';
 
   } catch (err) {
@@ -146,44 +146,63 @@ async function deleteFavorite(id) {
 
 
 // =====================================================
-// WEATHER SERVICE  (nou - adaptat de weather-api)
+// VISITED SERVICE  (nou)
 // =====================================================
 
-async function fetchWeather() {
-  if (!currentCountry || currentCountry.capital === 'N/A') {
-    showToast('Aquest país no té capital registrada', 'error');
-    return;
-  }
-
-  const widget = document.getElementById('weatherWidget');
-  widget.innerHTML = '<p class="loading-msg">Consultant meteorologia...</p>';
-
+async function loadVisited() {
+  const list = document.getElementById('visitedList');
+  list.innerHTML = '<li class="loading-msg">Carregant...</li>';
   try {
-    const res = await fetch(`${CONFIG.WEATHER_API}/weather/${encodeURIComponent(currentCountry.capital)}`);
-    if (!res.ok) throw new Error('No s\'ha pogut obtenir el temps');
+    const res = await fetch(`${CONFIG.VISITED_API}/visited`);
     const data = await res.json();
-
-    const iconUrl = `https://openweathermap.org/img/wn/${data.icon}@2x.png`;
-
-    widget.innerHTML = `
-      <div class="weather-result">
-        <div class="weather-main">
-          <img src="${iconUrl}" alt="${data.description}" />
-          <div>
-            <div class="weather-temp">${Math.round(data.temperature)}°C</div>
-            <div class="weather-desc">${data.description}</div>
-          </div>
+    if (!data.length) {
+      list.innerHTML = '<li class="empty-msg">Encara no hi ha països visitats</li>';
+      return;
+    }
+    list.innerHTML = data.map(item => `
+      <li>
+        <div>
+          <span class="item-name">${item.flag} ${item.name}</span>
+          <div class="item-meta">${item.capital} · ${item.region}</div>
+          <div class="item-meta date">${new Date(item.visitedAt).toLocaleDateString('ca-ES', {day:'numeric', month:'short', year:'numeric'})}</div>
         </div>
-        <div class="weather-details">
-          <div class="weather-detail"><span>Sensació</span>${Math.round(data.feels_like)}°C</div>
-          <div class="weather-detail"><span>Humitat</span>${data.humidity}%</div>
-          <div class="weather-detail"><span>Vent</span>${data.wind} m/s</div>
-          <div class="weather-detail"><span>Ciutat</span>${data.city}</div>
-        </div>
-      </div>
-    `;
-  } catch (err) {
-    widget.innerHTML = `<p class="empty-msg">${err.message}</p>`;
+        <button class="btn-delete" onclick="deleteVisited('${item.id}')" title="Eliminar">✕</button>
+      </li>
+    `).join('');
+  } catch {
+    list.innerHTML = '<li class="empty-msg">No s\'ha pogut connectar amb el servei</li>';
+  }
+}
+
+async function addVisited() {
+  if (!currentCountry) return;
+  try {
+    const res = await fetch(`${CONFIG.VISITED_API}/visited`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: currentCountry.name,
+        capital: currentCountry.capital,
+        region: currentCountry.region,
+        flag: currentCountry.flag
+      })
+    });
+    if (res.status === 409) { showToast('Aquest país ja està marcat com a visitat', 'error'); return; }
+    if (!res.ok) throw new Error();
+    showToast(`${currentCountry.name} marcat com a visitat 🌍`, 'success');
+    loadVisited();
+  } catch {
+    showToast('Error en afegir als visitats', 'error');
+  }
+}
+
+async function deleteVisited(id) {
+  try {
+    await fetch(`${CONFIG.VISITED_API}/visited/${id}`, { method: 'DELETE' });
+    showToast('Eliminat dels visitats');
+    loadVisited();
+  } catch {
+    showToast('Error en eliminar', 'error');
   }
 }
 
@@ -253,4 +272,5 @@ async function deleteComment(id) {
 
 // Càrrega inicial
 loadFavorites();
+loadVisited();
 loadComments();

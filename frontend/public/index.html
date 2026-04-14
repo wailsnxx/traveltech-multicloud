@@ -41,14 +41,15 @@
         <button class="btn-load" onclick="loadFavorites()">Recarregar</button>
       </section>
 
-      <!-- WEATHER -->
+      <!-- VISITED -->
       <section class="section service-section">
-        <h2>🌤 Meteorologia</h2>
-        <p class="service-badge">Koyeb</p>
-        <div id="weatherForm" class="service-form hidden">
-          <button class="btn-add" onclick="fetchWeather()">Consultar temps</button>
+        <h2>🌍 Visitats</h2>
+        <p class="service-badge">Vercel</p>
+        <div id="visitedForm" class="service-form hidden">
+          <button class="btn-add" onclick="addVisited()">Marcar com a visitat</button>
         </div>
-        <div id="weatherWidget" class="weather-widget"></div>
+        <ul id="visitedList" class="items-list"></ul>
+        <button class="btn-load" onclick="loadVisited()">Recarregar</button>
       </section>
 
       <!-- COMMENTS -->
@@ -71,7 +72,7 @@
     <div class="cloud-badges">
       <span>Frontend: Render</span>
       <span>Favorites: Railway</span>
-      <span>Weather: Koyeb</span>
+      <span>Visited: Vercel</span>
       <span>Comments: Render</span>
     </div>
   </footer>
