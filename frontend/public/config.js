@@ -5,6 +5,6 @@
 const CONFIG = {
   FAVORITES_API: 'https://traveltech-multicloud-cxvk.onrender.com',
   WEATHER_API:   'https://traveltech-multicloud.vercel.app',
-  COMMENTS_API:  'https://traveltech-comments.onrender.com',
+  COMMENTS_API:  'https://traveltech-multicloud-1.onrender.com',
   COUNTRIES_API: 'https://restcountries.com/v3.1'
 };
