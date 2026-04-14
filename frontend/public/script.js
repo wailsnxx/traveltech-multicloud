@@ -20,11 +20,8 @@ async function searchCountry() {
   if (!query) return;
 
   const resultDiv = document.getElementById('countryResult');
-  const weatherDiv = document.getElementById('weatherResult');
   resultDiv.className = 'country-card';
   resultDiv.innerHTML = '<p class="loading-msg">Cercant...</p>';
-  weatherDiv.className = 'weather-card hidden';
-  document.getElementById('weatherWidget').innerHTML = '';
 
   try {
     const res = await fetch(`${CONFIG.COUNTRIES_API}/name/${encodeURIComponent(query)}?fullText=false`);
