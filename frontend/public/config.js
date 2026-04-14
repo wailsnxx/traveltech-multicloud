@@ -4,7 +4,7 @@
 // =====================================================
 const CONFIG = {
   FAVORITES_API: 'https://traveltech-multicloud-cxvk.onrender.com',
-  WEATHER_API:   'https://traveltech-weather.koyeb.app',
+  WEATHER_API:   'https://traveltech-multicloud.vercel.app',
   COMMENTS_API:  'https://traveltech-comments.onrender.com',
   COUNTRIES_API: 'https://restcountries.com/v3.1'
 };
