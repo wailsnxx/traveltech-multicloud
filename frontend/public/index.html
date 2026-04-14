@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TravelTech Solutions</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo">✈ TravelTech Solutions</div>
+      <p class="tagline">Planifica els teus viatges amb estil</p>
+    </div>
+  </header>
+
+  <main>
+    <!-- CERCA DE PAÍS -->
+    <section class="section search-section">
+      <h2>Cerca un país</h2>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Ex: Japan, France, Brazil..." />
+        <button onclick="searchCountry()">Cercar</button>
+      </div>
+      <div id="countryResult" class="country-card hidden"></div>
+      <div id="weatherResult" class="weather-card hidden"></div>
+    </section>
+
+    <!-- TRES COLUMNES DE MICROSERVEIS -->
+    <div class="services-grid">
+
+      <!-- FAVORITES -->
+      <section class="section service-section">
+        <h2>⭐ Favorits</h2>
+        <p class="service-badge">Railway</p>
+        <div id="favForm" class="service-form hidden">
+          <button class="btn-add" onclick="addFavorite()">Afegir als favorits</button>
+        </div>
+        <ul id="favoritesList" class="items-list"></ul>
+        <button class="btn-load" onclick="loadFavorites()">Recarregar</button>
+      </section>
+
+      <!-- WEATHER -->
+      <section class="section service-section">
+        <h2>🌤 Meteorologia</h2>
+        <p class="service-badge">Koyeb</p>
+        <div id="weatherForm" class="service-form hidden">
+          <button class="btn-add" onclick="fetchWeather()">Consultar temps</button>
+        </div>
+        <div id="weatherWidget" class="weather-widget"></div>
+      </section>
+
+      <!-- COMMENTS -->
+      <section class="section service-section">
+        <h2>💬 Comentaris</h2>
+        <p class="service-badge">Render</p>
+        <div id="commentForm" class="service-form hidden">
+          <textarea id="commentText" placeholder="Escriu un comentari sobre aquest país..."></textarea>
+          <button class="btn-add" onclick="addComment()">Afegir comentari</button>
+        </div>
+        <ul id="commentsList" class="items-list"></ul>
+        <button class="btn-load" onclick="loadComments()">Recarregar</button>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>TravelTech Solutions · Arquitectura Multi-Cloud · 2026</p>
+    <div class="cloud-badges">
+      <span>Frontend: Render</span>
+      <span>Favorites: Railway</span>
+      <span>Weather: Koyeb</span>
+      <span>Comments: Render</span>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

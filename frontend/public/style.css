@@ -1,0 +1,464 @@
+/* ============================================
+   TravelTech Solutions - Stylesheet
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary: #1a6fc4;
+  --primary-dark: #145a9e;
+  --accent: #f0a500;
+  --bg: #f4f6fb;
+  --surface: #ffffff;
+  --text: #1e2a3a;
+  --text-light: #6b7a8d;
+  --border: #e2e8f0;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --radius: 12px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.tagline {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  margin-top: 6px;
+}
+
+/* MAIN */
+main {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 32px 20px;
+}
+
+/* SECTIONS */
+.section {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+
+.section h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+/* SEARCH */
+.search-section h2 {
+  font-size: 1.4rem;
+}
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-bar input:focus {
+  border-color: var(--primary);
+}
+
+.search-bar button {
+  padding: 12px 24px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.search-bar button:hover {
+  background: var(--primary-dark);
+}
+
+/* COUNTRY CARD */
+.country-card {
+  margin-top: 20px;
+  padding: 20px;
+  background: linear-gradient(135deg, #eef4ff 0%, #f8faff 100%);
+  border-radius: var(--radius);
+  border: 1px solid #c8d9f5;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.country-card.hidden { display: none; }
+
+.country-flag-img img {
+  width: 100px;
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+}
+
+.flag-emoji {
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.country-info h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.official-name {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  margin-top: 4px;
+  margin-bottom: 12px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.info-item {
+  background: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.info-item span {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* SERVICES GRID */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.service-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.service-badge {
+  display: inline-block;
+  background: #eef4ff;
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid #c8d9f5;
+  width: fit-content;
+  margin-top: -8px;
+}
+
+/* SERVICE FORMS */
+.service-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.service-form.hidden { display: none; }
+
+.service-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 70px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.service-form textarea:focus {
+  border-color: var(--primary);
+}
+
+.btn-add {
+  padding: 10px 16px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-add:hover {
+  background: #d4920a;
+}
+
+.btn-load {
+  padding: 8px 14px;
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: fit-content;
+}
+
+.btn-load:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* ITEMS LIST */
+.items-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.items-list li {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 0.9rem;
+  gap: 8px;
+}
+
+.item-name {
+  font-weight: 600;
+  color: var(--text);
+  display: block;
+}
+
+.item-meta {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+.item-meta.date {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.btn-delete {
+  background: none;
+  border: none;
+  color: var(--danger);
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: background 0.2s;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.btn-delete:hover {
+  background: #fee2e2;
+}
+
+.empty-msg {
+  color: var(--text-light);
+  font-size: 0.85rem;
+  font-style: italic;
+  text-align: center;
+  padding: 12px;
+  list-style: none;
+}
+
+.loading-msg {
+  color: var(--primary);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 12px;
+}
+
+.error-msg {
+  color: var(--danger);
+  font-size: 0.9rem;
+  padding: 8px;
+}
+
+/* WEATHER WIDGET */
+.weather-widget {
+  flex: 1;
+}
+
+.weather-result {
+  background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+  border: 1px solid #bae6fd;
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.weather-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.weather-main img {
+  width: 64px;
+  height: 64px;
+}
+
+.weather-temp {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  line-height: 1;
+}
+
+.weather-desc {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  margin-top: 4px;
+}
+
+.weather-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+
+.weather-detail {
+  background: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.weather-detail span {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+/* FOOTER */
+footer {
+  background: var(--text);
+  color: #94a3b8;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.85rem;
+}
+
+.cloud-badges {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.cloud-badges span {
+  background: rgba(255,255,255,0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+/* TOAST */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--text);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  z-index: 1000;
+  animation: slideIn 0.3s ease;
+}
+
+.toast.hidden { display: none; }
+.toast.success { background: var(--success); }
+.toast.error   { background: var(--danger); }
+
+@keyframes slideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .info-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .logo { font-size: 1.5rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .country-card { flex-direction: column; }
+  .info-grid { grid-template-columns: 1fr; }
+  .weather-details { grid-template-columns: repeat(2, 1fr); }
+}
