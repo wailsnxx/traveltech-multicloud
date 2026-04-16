@@ -8,60 +8,96 @@
 </head>
 <body>
 
+  <!-- HEADER -->
   <header>
     <div class="header-inner">
       <div class="logo">✈ TravelTech Solutions</div>
       <p class="tagline">Planifica els teus viatges amb estil</p>
     </div>
+
+    <!-- CERCA dins del header -->
+    <div class="search-hero">
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Cerca un país... Ex: Japan, France, Brazil" />
+        <button onclick="searchCountry()">🔍 Cercar</button>
+      </div>
+    </div>
   </header>
 
   <main>
-    <!-- CERCA DE PAÍS -->
-    <section class="section search-section">
-      <h2>Cerca un país</h2>
-      <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Ex: Japan, France, Brazil..." />
-        <button onclick="searchCountry()">Cercar</button>
-      </div>
-      <div id="countryResult" class="country-card hidden"></div>
-    </section>
 
-    <!-- TRES COLUMNES DE MICROSERVEIS -->
+    <!-- RESULTAT DEL PAÍS -->
+    <div id="countryResult" class="country-card hidden"></div>
+
+    <!-- MICROSERVEIS -->
     <div class="services-grid">
 
       <!-- FAVORITES -->
-      <section class="section service-section">
-        <h2>⭐ Favorits</h2>
-        <p class="service-badge">Railway</p>
-        <div id="favForm" class="service-form hidden">
-          <button class="btn-add" onclick="addFavorite()">Afegir als favorits</button>
+      <div class="service-card">
+        <div class="service-header fav-header">
+          <span class="service-icon">⭐</span>
+          <div>
+            <h2>Favorits</h2>
+            <span class="service-badge">Render</span>
+          </div>
         </div>
-        <ul id="favoritesList" class="items-list"></ul>
-        <button class="btn-load" onclick="loadFavorites()">Recarregar</button>
-      </section>
+        <div class="service-body">
+          <div id="favForm" class="service-form hidden">
+            <button class="btn-add" onclick="addFavorite()">+ Afegir als favorits</button>
+          </div>
+          <ul id="favoritesList" class="items-list">
+            <li class="empty-msg">Cerca un país per afegir</li>
+          </ul>
+        </div>
+        <div class="service-footer">
+          <button class="btn-reload" onclick="loadFavorites()">↻ Recarregar</button>
+        </div>
+      </div>
 
       <!-- VISITED -->
-      <section class="section service-section">
-        <h2>🌍 Visitats</h2>
-        <p class="service-badge">Vercel</p>
-        <div id="visitedForm" class="service-form hidden">
-          <button class="btn-add" onclick="addVisited()">Marcar com a visitat</button>
+      <div class="service-card">
+        <div class="service-header vis-header">
+          <span class="service-icon">🌍</span>
+          <div>
+            <h2>Visitats</h2>
+            <span class="service-badge">Vercel</span>
+          </div>
         </div>
-        <ul id="visitedList" class="items-list"></ul>
-        <button class="btn-load" onclick="loadVisited()">Recarregar</button>
-      </section>
+        <div class="service-body">
+          <div id="visitedForm" class="service-form hidden">
+            <button class="btn-add" onclick="addVisited()">+ Marcar com a visitat</button>
+          </div>
+          <ul id="visitedList" class="items-list">
+            <li class="empty-msg">Cerca un país per marcar</li>
+          </ul>
+        </div>
+        <div class="service-footer">
+          <button class="btn-reload" onclick="loadVisited()">↻ Recarregar</button>
+        </div>
+      </div>
 
       <!-- COMMENTS -->
-      <section class="section service-section">
-        <h2>💬 Comentaris</h2>
-        <p class="service-badge">Render</p>
-        <div id="commentForm" class="service-form hidden">
-          <textarea id="commentText" placeholder="Escriu un comentari sobre aquest país..."></textarea>
-          <button class="btn-add" onclick="addComment()">Afegir comentari</button>
+      <div class="service-card">
+        <div class="service-header com-header">
+          <span class="service-icon">💬</span>
+          <div>
+            <h2>Comentaris</h2>
+            <span class="service-badge">Render</span>
+          </div>
         </div>
-        <ul id="commentsList" class="items-list"></ul>
-        <button class="btn-load" onclick="loadComments()">Recarregar</button>
-      </section>
+        <div class="service-body">
+          <div id="commentForm" class="service-form hidden">
+            <textarea id="commentText" placeholder="Escriu un comentari..."></textarea>
+            <button class="btn-add" onclick="addComment()">+ Afegir comentari</button>
+          </div>
+          <ul id="commentsList" class="items-list">
+            <li class="empty-msg">Cerca un país per comentar</li>
+          </ul>
+        </div>
+        <div class="service-footer">
+          <button class="btn-reload" onclick="loadComments()">↻ Recarregar</button>
+        </div>
+      </div>
 
     </div>
   </main>
@@ -69,10 +105,10 @@
   <footer>
     <p>TravelTech Solutions · Arquitectura Multi-Cloud · 2026</p>
     <div class="cloud-badges">
-      <span>Frontend: Render</span>
-      <span>Favorites: Railway</span>
-      <span>Visited: Vercel</span>
-      <span>Comments: Render</span>
+      <span>🖥 Frontend → Render</span>
+      <span>⭐ Favorites → Render</span>
+      <span>🌍 Visited → Vercel</span>
+      <span>💬 Comments → Render</span>
     </div>
   </footer>
 
