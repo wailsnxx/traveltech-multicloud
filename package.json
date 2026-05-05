@@ -1,0 +1,17 @@
+{
+  "name": "traveltech-solutions",
+  "version": "1.0.0",
+  "description": "TravelTech Solutions - Multi-cloud deployment project",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint .",
+    "build": "echo 'Build OK'"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "jest": "^29.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

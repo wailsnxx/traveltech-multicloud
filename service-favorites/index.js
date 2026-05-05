@@ -1,7 +1,5 @@
-// =====================================================
 // TravelTech Solutions - Favorites Microservice
 // PORT: 4001 (local) | Desplegament: Railway
-// =====================================================
 
 const express = require('express');
 const cors = require('cors');
