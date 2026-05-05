@@ -1,4 +1,4 @@
-name: CI - Tests
+name: CI - Build, Lint i Tests
 
 on:
   push:
@@ -7,24 +7,26 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  quality:
     runs-on: ubuntu-latest
 
     steps:
-      # Descarga el código del repositorio
       - name: Checkout del codi
         uses: actions/checkout@v4
 
-      # Configura la versión de Node.js
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      # Instala las dependencias del proyecto
       - name: Instal·lar dependències
         run: npm install
 
-      # Ejecuta los tests
+      - name: Build del projecte
+        run: npm run build
+
+      - name: Anàlisi amb ESLint
+        run: npm run lint
+
       - name: Executar tests
         run: npm test
