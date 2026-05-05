@@ -1,0 +1,30 @@
+name: CI - Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Descarga el código del repositorio
+      - name: Checkout del codi
+        uses: actions/checkout@v4
+
+      # Configura la versión de Node.js
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Instala las dependencias del proyecto
+      - name: Instal·lar dependències
+        run: npm install
+
+      # Ejecuta los tests
+      - name: Executar tests
+        run: npm test

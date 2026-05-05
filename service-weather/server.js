@@ -1,8 +1,4 @@
-// =====================================================
-// TravelTech Solutions - Weather Microservice
-// Adaptat de weather-api
-// PORT: 4002 (local) | Desplegament: Koyeb
-// =====================================================
+
 
 const express = require('express');
 const cors = require('cors');
