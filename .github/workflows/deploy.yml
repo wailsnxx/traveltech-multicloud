@@ -1,0 +1,49 @@
+name: CD - Deploy a Vercel
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  # Primer executa els tests i la qualitat del codi
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del codi
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instal·lar dependències
+        run: npm install
+
+      - name: Build del projecte
+        run: npm run build
+
+      - name: Anàlisi amb ESLint
+        run: npm run lint
+
+      - name: Executar tests
+        run: npm test
+
+  # Només es desplega si el job anterior ha passat correctament
+  deploy:
+    runs-on: ubuntu-latest
+    needs: quality
+
+    steps:
+      - name: Checkout del codi
+        uses: actions/checkout@v4
+
+      # Desplega el frontend a Vercel
+      - name: Deploy a Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./frontend
+          vercel-args: '--prod'
