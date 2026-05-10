@@ -11,22 +11,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Descarrega el codi del repositori
       - name: Checkout del codi
         uses: actions/checkout@v4
 
+      # Configura la versió de Node.js
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
+      # Instal·la totes les dependències del projecte
       - name: Instal·lar dependències
         run: npm install
 
+      # Construeix el projecte i verifica que no hi ha errors
       - name: Build del projecte
         run: npm run build
 
+      # Analitza el codi amb ESLint per detectar errors d'estil
       - name: Anàlisi amb ESLint
         run: npm run lint
 
+      # Executa els tests automatitzats
       - name: Executar tests
         run: npm test
